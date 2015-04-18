@@ -405,8 +405,8 @@ void Game::processEvents(sf::Time dt)
         vx_ai=traject.normalize().x;
         vy_ai=traject.normalize().y;                                              //GOES BACK TO A FIXED POSITION
             sAi.move(vx_ai,vy_ai);
-        std::cout<<vx_puck<<std::endl;
-        std::cout<<vy_ai<<std::endl;
+        //std::cout<<vx_puck<<std::endl;
+       // std::cout<<vy_ai<<std::endl;
 
 
     }

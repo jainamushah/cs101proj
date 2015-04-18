@@ -10,8 +10,8 @@ sf::Texture texture;
     // take input of interface
     if (!texture.loadFromFile("Interface.jpg"))
         return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
-    sprite.setPosition(22,25);
+    sf::Sprite home_screen(texture);
+    home_screen.setPosition(22,25);
 
 
 	// take input of Newgame button
@@ -62,8 +62,8 @@ sf::Texture texture;
         {
             game.mWindow.clear(); //clear the screen to update position position of sprite
 
-        // Draw the sprite on the window
-            game.mWindow.draw(sprite);
+        // Draw the sprites on the window
+            game.mWindow.draw(home_screen);
             game.mWindow.draw(sprite_newgame);
             game.mWindow.draw(sprite_credits);
             game.mWindow.draw(sprite_howtoplay);
