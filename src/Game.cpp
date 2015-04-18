@@ -385,30 +385,41 @@ void Game::processEvents(sf::Time dt)
 
             else
             {
-                if(sPuck.getPosition().x<=510)
+                if((sPuck.getPosition().x<=510)&&(sPuck.getPosition().x>sAi.getPosition().x))
                        {
 
                         VEC2D traject(sPuck.getPosition().x-sAi.getPosition().x,sPuck.getPosition().y-sAi.getPosition().y);
-                        vx_ai=2.5*traject.normalize().x;
-                        vy_ai=2.5*traject.normalize().y;
+                        vx_ai=2*traject.normalize().x;
+                        vy_ai=2*traject.normalize().y;
                         if(sPuck.getPosition().x!=160.f,sPuck.getPosition().y!=320.f)
                             sAi.move(vx_ai,vy_ai);
 
                         }
+                    if(sPuck.getPosition().x<=sAi.getPosition().x)
+                    {
+                        VEC2D traject_def(160.f-sAi.getPosition().x,320.f-sAi.getPosition().y);
+                        vx_ai=2.5*traject_def.normalize().x;
+                        vy_ai=2.5*traject_def.normalize().y;
+                        sAi.move(vx_ai,vy_ai);
+                    }
 
             }
     }
 
-    if(vx_puck>0)
+   if(vx_puck>0)
     {
         VEC2D traject(160.f-sAi.getPosition().x,320.f-sAi.getPosition().y);       //DEFENSIVE MODE
-        vx_ai=traject.normalize().x;
-        vy_ai=traject.normalize().y;                                              //GOES BACK TO A FIXED POSITION
+        if(sAi.getPosition().x>161.f)
+        {
+            vx_ai=traject.normalize().x;
+            vy_ai=traject.normalize().y;
+        }
+        else
+        {
+            vx_ai=0;
+            vy_ai=0;
+        }                                    //GOES BACK TO A FIXED POSITION
             sAi.move(vx_ai,vy_ai);
-        //std::cout<<vx_puck<<std::endl;
-       // std::cout<<vy_ai<<std::endl;
-
-
     }
 
     //AI ALGO ENDS
