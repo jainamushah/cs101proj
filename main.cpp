@@ -77,6 +77,7 @@ sf::Texture texture;
                 { //takes mouse input
                 if(Event.mouseButton.x>=374 && Event.mouseButton.x<=615 &&Event.mouseButton.y>=103 && Event.mouseButton.y<=200) //new game starts
                 {
+                    game.s1=0,game.s2=0;   //for starting a new game
                     PlaySound("Click.wav",NULL,SND_ASYNC);
                     game.run(); //runs the game.h file
                 }
