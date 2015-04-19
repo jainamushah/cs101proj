@@ -366,7 +366,7 @@ void Game::processEvents(sf::Time dt)
              Line ai_pos2(desired_path2.inter_pnt(puck_path2));
 
              if(ai_pos1.x>=59&&ai_pos1.y>=59&&ai_pos1.x<=471&&ai_pos1.y<=581)                //THUS KEEPING A CERTAIN DEGREE OF RANDOMNESS
-            {                                                                               //TO ENSURE IT IS ALSO BEATABLE
+            {                                                                               // to make it beatable
                 VEC2D ai_desired1(ai_pos1.x,ai_pos1.y);
                 VEC2D v_tempai(ai_desired1.x-sAi.getPosition().x,ai_desired1.y-sAi.getPosition().y);
                 vx_ai=2*v_tempai.normalize().x;
@@ -374,8 +374,8 @@ void Game::processEvents(sf::Time dt)
                 sAi.move(vx_ai,vy_ai);
             }
 
-            else if(ai_pos2.x>=59&&ai_pos2.y>=59&&ai_pos2.x<=471&&ai_pos2.y<=581)                //THUS KEEPING A CERTAIN DEGREE OF RANDOMNESS
-            {                                                                               //TO ENSURE IT IS ALSO BEATABLE
+            else if(ai_pos2.x>=59&&ai_pos2.y>=59&&ai_pos2.x<=471&&ai_pos2.y<=581)
+            {
                 VEC2D ai_desired2(ai_pos2.x,ai_pos2.y);
                 VEC2D v_tempai(ai_desired2.x-sAi.getPosition().x,ai_desired2.y-sAi.getPosition().y);
                 vx_ai=2*v_tempai.normalize().x;
@@ -391,13 +391,13 @@ void Game::processEvents(sf::Time dt)
                         VEC2D traject(sPuck.getPosition().x-sAi.getPosition().x,sPuck.getPosition().y-sAi.getPosition().y);
                         vx_ai=2*traject.normalize().x;
                         vy_ai=2*traject.normalize().y;
-                        if(sPuck.getPosition().x!=160.f,sPuck.getPosition().y!=320.f)
+                        if(sPuck.getPosition().x!=160.f,sPuck.getPosition().y!=320.f)                   //goes towards the puck always directed towards it until hit
                             sAi.move(vx_ai,vy_ai);
 
                         }
                     if(sPuck.getPosition().x<=sAi.getPosition().x)
                     {
-                        VEC2D traject_def(160.f-sAi.getPosition().x,320.f-sAi.getPosition().y);
+                        VEC2D traject_def(160.f-sAi.getPosition().x,320.f-sAi.getPosition().y);     //if unable to reach will come back
                         vx_ai=2.5*traject_def.normalize().x;
                         vy_ai=2.5*traject_def.normalize().y;
                         sAi.move(vx_ai,vy_ai);
@@ -411,14 +411,14 @@ void Game::processEvents(sf::Time dt)
         VEC2D traject(160.f-sAi.getPosition().x,320.f-sAi.getPosition().y);       //DEFENSIVE MODE
         if(sAi.getPosition().x>161.f)
         {
-            vx_ai=traject.normalize().x;
+            vx_ai=traject.normalize().x;                    //GOES BACK TO A FIXED POSITION
             vy_ai=traject.normalize().y;
         }
         else
         {
             vx_ai=0;
-            vy_ai=0;
-        }                                    //GOES BACK TO A FIXED POSITION
+            vy_ai=0;                //DOES NOT VIBRATE
+        }
             sAi.move(vx_ai,vy_ai);
     }
 
@@ -476,9 +476,9 @@ void Game::processEvents(sf::Time dt)
             double d1=sqrt(d2*d2-c.Length()*c.Length()+4761);
             double d=d1-d2;
             r_puck=r_puck.diff(v_puck.normalize().scale(d));
-            if(r_puck.y>=590)r_puck.y=589;
+            if(r_puck.y>=590)r_puck.y=589;                      //COLLISION ALGO 2 CONSIDERING INTRUSION AND USING
             if(r_puck.y<=50)r_puck.y=51;
-            if(r_puck.x>=970)r_puck.x=969;
+            if(r_puck.x>=970)r_puck.x=969;                          //INTERPOLATION OF FRAMES
             sf::Vector2f new_r(r_puck.x,r_puck.y);
             sPuck.setPosition(new_r);
             VEC2D normal=r_player.diff(r_puck).normalize();
