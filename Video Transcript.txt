@@ -1,0 +1,25 @@
+How to install and run code blocks in your computer
+
+First go to the location where the project is provided ie. moodle and downlad the file in the user folder.
+After downloading you will need extract this file(). You may extract this to the desktop according to your convenience.I
+In the source there is the  enire code for the project.You can also see the report,Presentation file and the readme file from the folder.
+The read me file contains the details of the group that made this project.
+To run the code you will need to download Codeblocks whose link has been provided in the read me file
+
+After open the link, download the Codeblocks according your system that has been provided in the website.
+After downlooading Codeblocks,you will need to install the Codeblocks just like another software.
+After you are done eith this you have to download SFML 2.0  graphics library whose download link has also provided in the readme file.
+For the Windows you may download the GCC4.7TDMSJLJ-32bit but you can download according to your system if you have other whose detail has been hiven in the website.
+This would download a zip file.After the zip file is downladed you wil need to extract the file.
+It may take some time.After extraction is complete, install the library folder in the codeblocks whose tutorial link has been given in the readme file.
+After this is completed,open codeblocks and go to the project build option,in search directories in compiler you have add the include folder of the SFML 2.0 folder.
+Link to this folder has to be added in the compiler.
+In linker you have to add the library folder of SFML 2.0.
+After that you have to go to linker settings you have add the libraries SFML,graphics,window and also system.
+The description are given in complete details in the video.
+In the compiler settings you have to define SFML_static.After you have done with this SFML is ready to ru on your Codeblocks.
+
+After that you can run the project my opening the file Airhockeyfinaltest.
+After codeblocks run,build the project and then press run if it shows no error.
+After running the game the main interface opens where the rules and the credits are provided which you can see for your reference.
+You may play the game...Hope you enjoy it!!!!!
